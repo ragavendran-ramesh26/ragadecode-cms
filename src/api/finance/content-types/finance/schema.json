@@ -1,16 +1,25 @@
 {
   "kind": "collectionType",
-  "collectionName": "technologies",
+  "collectionName": "finances",
   "info": {
-    "singularName": "technology",
-    "pluralName": "technologies",
-    "displayName": "technology"
+    "singularName": "finance",
+    "pluralName": "finances",
+    "displayName": "Finance"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description_in_detail": {
+      "type": "richtext"
+    },
+    "Tags": {
+      "type": "string"
+    },
     "coverimage": {
       "type": "media",
       "multiple": false,
@@ -21,20 +30,11 @@
         "audios"
       ]
     },
-    "Title": {
-      "type": "string"
-    },
     "slug": {
       "type": "uid",
       "targetField": "Title"
     },
-    "Tags": {
-      "type": "string"
-    },
-    "Description_in_detail": {
-      "type": "richtext"
-    },
-    "publishtedat": {
+    "publishedat": {
       "type": "date"
     }
   }
