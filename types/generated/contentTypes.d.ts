@@ -442,6 +442,42 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAutomobileAutomobile extends Struct.CollectionTypeSchema {
+  collectionName: 'automobiles';
+  info: {
+    displayName: 'automobile';
+    pluralName: 'automobiles';
+    singularName: 'automobile';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    coverimage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description_in_detail: Schema.Attribute.RichText;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::automobile.automobile'
+    > &
+      Schema.Attribute.Private;
+    publishdat: Schema.Attribute.Date;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'Title'>;
+    Tags: Schema.Attribute.String;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFinanceFinance extends Struct.CollectionTypeSchema {
   collectionName: 'finances';
   info: {
@@ -1060,6 +1096,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::author.author': ApiAuthorAuthor;
+      'api::automobile.automobile': ApiAutomobileAutomobile;
       'api::finance.finance': ApiFinanceFinance;
       'api::news-article.news-article': ApiNewsArticleNewsArticle;
       'api::technology.technology': ApiTechnologyTechnology;
