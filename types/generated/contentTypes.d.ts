@@ -454,8 +454,7 @@ export interface ApiAutomobileAutomobile extends Struct.CollectionTypeSchema {
   };
   attributes: {
     coverimage: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
+      'images' | 'files' | 'videos' | 'audios'
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
