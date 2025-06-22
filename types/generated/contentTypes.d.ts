@@ -512,6 +512,38 @@ export interface ApiFinanceFinance extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiHashtagHashtag extends Struct.CollectionTypeSchema {
+  collectionName: 'hashtags';
+  info: {
+    displayName: 'Hashtag';
+    pluralName: 'hashtags';
+    singularName: 'hashtag';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hashtag.hashtag'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    tags: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::news-article.news-article'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiNewsArticleNewsArticle extends Struct.CollectionTypeSchema {
   collectionName: 'news_articles';
   info: {
@@ -523,6 +555,9 @@ export interface ApiNewsArticleNewsArticle extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    category: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'news-article'>;
     coverimage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
@@ -530,14 +565,23 @@ export interface ApiNewsArticleNewsArticle extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Description_in_detail: Schema.Attribute.RichText;
+    hashtags: Schema.Attribute.Relation<'manyToMany', 'api::hashtag.hashtag'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::news-article.news-article'
     > &
       Schema.Attribute.Private;
+    news_articles: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::news-article.news-article'
+    >;
     publishedat: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
+    similar_articles: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::news-article.news-article'
+    >;
     slug: Schema.Attribute.UID<'Title'>;
     Tags: Schema.Attribute.String;
     Title: Schema.Attribute.String &
@@ -1097,6 +1141,7 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::automobile.automobile': ApiAutomobileAutomobile;
       'api::finance.finance': ApiFinanceFinance;
+      'api::hashtag.hashtag': ApiHashtagHashtag;
       'api::news-article.news-article': ApiNewsArticleNewsArticle;
       'api::technology.technology': ApiTechnologyTechnology;
       'plugin::content-releases.release': PluginContentReleasesRelease;
