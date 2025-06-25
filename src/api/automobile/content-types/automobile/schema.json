@@ -36,6 +36,9 @@
     },
     "publishdat": {
       "type": "date"
+    },
+    "category": {
+      "type": "string"
     }
   }
 }

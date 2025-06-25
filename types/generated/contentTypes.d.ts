@@ -453,6 +453,7 @@ export interface ApiAutomobileAutomobile extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    category: Schema.Attribute.String;
     coverimage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
@@ -538,6 +539,10 @@ export interface ApiHashtagHashtag extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::news-article.news-article'
     >;
+    triptags: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::tourism-travel-trip.tourism-travel-trip'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -621,6 +626,42 @@ export interface ApiTechnologyTechnology extends Struct.CollectionTypeSchema {
     publishtedat: Schema.Attribute.Date;
     slug: Schema.Attribute.UID<'Title'>;
     Tags: Schema.Attribute.String;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTourismTravelTripTourismTravelTrip
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'tourism_travel_trips';
+  info: {
+    displayName: 'Tourism Travel Trip';
+    pluralName: 'tourism-travel-trips';
+    singularName: 'tourism-travel-trip';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Schema.Attribute.String & Schema.Attribute.Required;
+    coverimage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description_in_detail: Schema.Attribute.RichText;
+    hashtags: Schema.Attribute.Relation<'manyToMany', 'api::hashtag.hashtag'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tourism-travel-trip.tourism-travel-trip'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'Title'>;
     Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1144,6 +1185,7 @@ declare module '@strapi/strapi' {
       'api::hashtag.hashtag': ApiHashtagHashtag;
       'api::news-article.news-article': ApiNewsArticleNewsArticle;
       'api::technology.technology': ApiTechnologyTechnology;
+      'api::tourism-travel-trip.tourism-travel-trip': ApiTourismTravelTripTourismTravelTrip;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

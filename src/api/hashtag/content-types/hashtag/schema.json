@@ -19,6 +19,12 @@
       "relation": "manyToMany",
       "target": "api::news-article.news-article",
       "inversedBy": "hashtags"
+    },
+    "triptags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tourism-travel-trip.tourism-travel-trip",
+      "inversedBy": "hashtags"
     }
   }
 }

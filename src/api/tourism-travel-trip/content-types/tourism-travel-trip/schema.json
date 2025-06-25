@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tourism_travel_trips",
+  "info": {
+    "singularName": "tourism-travel-trip",
+    "pluralName": "tourism-travel-trips",
+    "displayName": "Tourism Travel Trip"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "coverimage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Description_in_detail": {
+      "type": "richtext"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Title"
+    },
+    "hashtags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::hashtag.hashtag",
+      "mappedBy": "triptags"
+    },
+    "category": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
