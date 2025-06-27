@@ -598,6 +598,38 @@ export interface ApiNewsArticleNewsArticle extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiStaticPageStaticPage extends Struct.CollectionTypeSchema {
+  collectionName: 'static_pages';
+  info: {
+    displayName: 'static-page';
+    pluralName: 'static-pages';
+    singularName: 'static-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category: Schema.Attribute.String;
+    content: Schema.Attribute.RichText;
+    created_date: Schema.Attribute.Date;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::static-page.static-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'Title'>;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTechnologyTechnology extends Struct.CollectionTypeSchema {
   collectionName: 'technologies';
   info: {
@@ -1184,6 +1216,7 @@ declare module '@strapi/strapi' {
       'api::finance.finance': ApiFinanceFinance;
       'api::hashtag.hashtag': ApiHashtagHashtag;
       'api::news-article.news-article': ApiNewsArticleNewsArticle;
+      'api::static-page.static-page': ApiStaticPageStaticPage;
       'api::technology.technology': ApiTechnologyTechnology;
       'api::tourism-travel-trip.tourism-travel-trip': ApiTourismTravelTripTourismTravelTrip;
       'plugin::content-releases.release': PluginContentReleasesRelease;
