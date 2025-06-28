@@ -62,6 +62,24 @@
       "relation": "manyToMany",
       "target": "api::hashtag.hashtag",
       "mappedBy": "tags"
+    },
+    "countries": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::country.country",
+      "mappedBy": "news_articles"
+    },
+    "states": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::state.state",
+      "inversedBy": "news_articles"
+    },
+    "cities": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::city.city",
+      "mappedBy": "news_articles"
     }
   }
 }

@@ -40,6 +40,24 @@
     "category": {
       "type": "string",
       "required": true
+    },
+    "countries": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::country.country",
+      "mappedBy": "tourism_travel_trips"
+    },
+    "states": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::state.state",
+      "mappedBy": "tourism_travel_trips"
+    },
+    "cities": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::city.city",
+      "mappedBy": "tourism_travel_trips"
     }
   }
 }

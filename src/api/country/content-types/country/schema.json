@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "countries",
+  "info": {
+    "singularName": "country",
+    "pluralName": "countries",
+    "displayName": "country"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "states": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::state.state",
+      "mappedBy": "country"
+    },
+    "news_articles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::news-article.news-article",
+      "inversedBy": "countries"
+    },
+    "tourism_travel_trips": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tourism-travel-trip.tourism-travel-trip",
+      "inversedBy": "countries"
+    }
+  }
+}

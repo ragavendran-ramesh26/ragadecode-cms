@@ -478,6 +478,79 @@ export interface ApiAutomobileAutomobile extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCityCity extends Struct.CollectionTypeSchema {
+  collectionName: 'cities';
+  info: {
+    displayName: 'city';
+    pluralName: 'cities';
+    singularName: 'city';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::city.city'> &
+      Schema.Attribute.Private;
+    news_articles: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::news-article.news-article'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'>;
+    state: Schema.Attribute.Relation<'manyToOne', 'api::state.state'>;
+    title: Schema.Attribute.String;
+    tourism_travel_trips: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::tourism-travel-trip.tourism-travel-trip'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCountryCountry extends Struct.CollectionTypeSchema {
+  collectionName: 'countries';
+  info: {
+    displayName: 'country';
+    pluralName: 'countries';
+    singularName: 'country';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::country.country'
+    > &
+      Schema.Attribute.Private;
+    news_articles: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::news-article.news-article'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'>;
+    states: Schema.Attribute.Relation<'oneToMany', 'api::state.state'>;
+    title: Schema.Attribute.String;
+    tourism_travel_trips: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::tourism-travel-trip.tourism-travel-trip'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFinanceFinance extends Struct.CollectionTypeSchema {
   collectionName: 'finances';
   info: {
@@ -567,6 +640,8 @@ export interface ApiNewsArticleNewsArticle extends Struct.CollectionTypeSchema {
     category: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'news-article'>;
+    cities: Schema.Attribute.Relation<'manyToMany', 'api::city.city'>;
+    countries: Schema.Attribute.Relation<'manyToMany', 'api::country.country'>;
     coverimage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
@@ -592,10 +667,47 @@ export interface ApiNewsArticleNewsArticle extends Struct.CollectionTypeSchema {
       'api::news-article.news-article'
     >;
     slug: Schema.Attribute.UID<'Title'>;
+    states: Schema.Attribute.Relation<'manyToMany', 'api::state.state'>;
     Tags: Schema.Attribute.String;
     Title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiStateState extends Struct.CollectionTypeSchema {
+  collectionName: 'states';
+  info: {
+    displayName: 'state';
+    pluralName: 'states';
+    singularName: 'state';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    cities: Schema.Attribute.Relation<'oneToMany', 'api::city.city'>;
+    country: Schema.Attribute.Relation<'manyToOne', 'api::country.country'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::state.state'> &
+      Schema.Attribute.Private;
+    news_articles: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::news-article.news-article'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'title'>;
+    title: Schema.Attribute.String;
+    tourism_travel_trips: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::tourism-travel-trip.tourism-travel-trip'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -692,6 +804,8 @@ export interface ApiTourismTravelTripTourismTravelTrip
   };
   attributes: {
     category: Schema.Attribute.String & Schema.Attribute.Required;
+    cities: Schema.Attribute.Relation<'manyToMany', 'api::city.city'>;
+    countries: Schema.Attribute.Relation<'manyToMany', 'api::country.country'>;
     coverimage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
@@ -708,6 +822,7 @@ export interface ApiTourismTravelTripTourismTravelTrip
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'Title'>;
+    states: Schema.Attribute.Relation<'manyToMany', 'api::state.state'>;
     Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1227,9 +1342,12 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::author.author': ApiAuthorAuthor;
       'api::automobile.automobile': ApiAutomobileAutomobile;
+      'api::city.city': ApiCityCity;
+      'api::country.country': ApiCountryCountry;
       'api::finance.finance': ApiFinanceFinance;
       'api::hashtag.hashtag': ApiHashtagHashtag;
       'api::news-article.news-article': ApiNewsArticleNewsArticle;
+      'api::state.state': ApiStateState;
       'api::static-page.static-page': ApiStaticPageStaticPage;
       'api::technology.technology': ApiTechnologyTechnology;
       'api::tourism-travel-trip.tourism-travel-trip': ApiTourismTravelTripTourismTravelTrip;
