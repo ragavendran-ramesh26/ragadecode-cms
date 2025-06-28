@@ -25,6 +25,12 @@
       "relation": "manyToMany",
       "target": "api::tourism-travel-trip.tourism-travel-trip",
       "inversedBy": "hashtags"
+    },
+    "technologytags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::technology.technology",
+      "inversedBy": "hashtags"
     }
   }
 }

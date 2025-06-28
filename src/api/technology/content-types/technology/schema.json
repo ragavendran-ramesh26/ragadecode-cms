@@ -36,6 +36,28 @@
     },
     "publishtedat": {
       "type": "date"
+    },
+    "category": {
+      "type": "string",
+      "required": true
+    },
+    "news_articles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::technology.technology",
+      "inversedBy": "similar_articles"
+    },
+    "similar_articles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::technology.technology",
+      "mappedBy": "news_articles"
+    },
+    "hashtags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::hashtag.hashtag",
+      "mappedBy": "technologytags"
     }
   }
 }

@@ -539,6 +539,10 @@ export interface ApiHashtagHashtag extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::news-article.news-article'
     >;
+    technologytags: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::technology.technology'
+    >;
     triptags: Schema.Attribute.Relation<
       'manyToMany',
       'api::tourism-travel-trip.tourism-travel-trip'
@@ -641,6 +645,7 @@ export interface ApiTechnologyTechnology extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    category: Schema.Attribute.String & Schema.Attribute.Required;
     coverimage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
@@ -648,14 +653,23 @@ export interface ApiTechnologyTechnology extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Description_in_detail: Schema.Attribute.RichText;
+    hashtags: Schema.Attribute.Relation<'manyToMany', 'api::hashtag.hashtag'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::technology.technology'
     > &
       Schema.Attribute.Private;
+    news_articles: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::technology.technology'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     publishtedat: Schema.Attribute.Date;
+    similar_articles: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::technology.technology'
+    >;
     slug: Schema.Attribute.UID<'Title'>;
     Tags: Schema.Attribute.String;
     Title: Schema.Attribute.String;
