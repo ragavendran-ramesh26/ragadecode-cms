@@ -34,7 +34,7 @@
     "Description_in_detail": {
       "type": "richtext"
     },
-    "publishtedat": {
+    "publishedat": {
       "type": "date"
     },
     "category": {

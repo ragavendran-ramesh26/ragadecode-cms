@@ -34,7 +34,7 @@
         "audios"
       ]
     },
-    "publishdat": {
+    "publishedat": {
       "type": "date"
     },
     "category": {

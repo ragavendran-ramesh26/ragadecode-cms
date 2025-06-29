@@ -467,7 +467,7 @@ export interface ApiAutomobileAutomobile extends Struct.CollectionTypeSchema {
       'api::automobile.automobile'
     > &
       Schema.Attribute.Private;
-    publishdat: Schema.Attribute.Date;
+    publishedat: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'Title'>;
     Tags: Schema.Attribute.String;
@@ -776,8 +776,8 @@ export interface ApiTechnologyTechnology extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::technology.technology'
     >;
+    publishedat: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
-    publishtedat: Schema.Attribute.Date;
     similar_articles: Schema.Attribute.Relation<
       'manyToMany',
       'api::technology.technology'
@@ -820,6 +820,7 @@ export interface ApiTourismTravelTripTourismTravelTrip
       'api::tourism-travel-trip.tourism-travel-trip'
     > &
       Schema.Attribute.Private;
+    publishedat: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'Title'>;
     states: Schema.Attribute.Relation<'manyToMany', 'api::state.state'>;

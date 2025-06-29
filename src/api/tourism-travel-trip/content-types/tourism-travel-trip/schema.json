@@ -58,6 +58,9 @@
       "relation": "manyToMany",
       "target": "api::city.city",
       "mappedBy": "tourism_travel_trips"
+    },
+    "publishedat": {
+      "type": "date"
     }
   }
 }
