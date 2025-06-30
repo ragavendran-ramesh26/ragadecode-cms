@@ -54,6 +54,18 @@
     },
     "bio": {
       "type": "richtext"
+    },
+    "technologies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::technology.technology",
+      "mappedBy": "author"
+    },
+    "tourism_travel_trips": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tourism-travel-trip.tourism-travel-trip",
+      "mappedBy": "author"
     }
   }
 }

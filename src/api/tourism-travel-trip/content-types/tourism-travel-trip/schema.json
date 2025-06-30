@@ -61,6 +61,15 @@
     },
     "publishedat": {
       "type": "date"
+    },
+    "short_description": {
+      "type": "text"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "tourism_travel_trips"
     }
   }
 }

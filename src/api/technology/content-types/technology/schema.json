@@ -58,6 +58,15 @@
       "relation": "manyToMany",
       "target": "api::hashtag.hashtag",
       "mappedBy": "technologytags"
+    },
+    "short_description": {
+      "type": "text"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "technologies"
     }
   }
 }

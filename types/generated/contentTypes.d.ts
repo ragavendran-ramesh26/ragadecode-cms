@@ -446,6 +446,14 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     >;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'>;
+    technologies: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::technology.technology'
+    >;
+    tourism_travel_trips: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tourism-travel-trip.tourism-travel-trip'
+    >;
     twitter: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -674,6 +682,7 @@ export interface ApiNewsArticleNewsArticle extends Struct.CollectionTypeSchema {
     >;
     publishedat: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
+    short_description: Schema.Attribute.Text;
     similar_articles: Schema.Attribute.Relation<
       'manyToMany',
       'api::news-article.news-article'
@@ -769,6 +778,7 @@ export interface ApiTechnologyTechnology extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
     category: Schema.Attribute.String & Schema.Attribute.Required;
     coverimage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
@@ -790,6 +800,7 @@ export interface ApiTechnologyTechnology extends Struct.CollectionTypeSchema {
     >;
     publishedat: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
+    short_description: Schema.Attribute.Text;
     similar_articles: Schema.Attribute.Relation<
       'manyToMany',
       'api::technology.technology'
@@ -815,6 +826,7 @@ export interface ApiTourismTravelTripTourismTravelTrip
     draftAndPublish: true;
   };
   attributes: {
+    author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
     category: Schema.Attribute.String & Schema.Attribute.Required;
     cities: Schema.Attribute.Relation<'manyToMany', 'api::city.city'>;
     countries: Schema.Attribute.Relation<'manyToMany', 'api::country.country'>;
@@ -834,6 +846,7 @@ export interface ApiTourismTravelTripTourismTravelTrip
       Schema.Attribute.Private;
     publishedat: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
+    short_description: Schema.Attribute.Text;
     slug: Schema.Attribute.UID<'Title'>;
     states: Schema.Attribute.Relation<'manyToMany', 'api::state.state'>;
     Title: Schema.Attribute.String;
