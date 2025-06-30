@@ -14,9 +14,6 @@
     "name": {
       "type": "string"
     },
-    "bio": {
-      "type": "text"
-    },
     "profile_image": {
       "type": "media",
       "multiple": false,
@@ -54,6 +51,9 @@
     },
     "linkedin": {
       "type": "string"
+    },
+    "bio": {
+      "type": "richtext"
     }
   }
 }
