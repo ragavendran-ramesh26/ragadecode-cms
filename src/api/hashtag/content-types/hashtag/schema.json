@@ -37,6 +37,12 @@
       "relation": "manyToMany",
       "target": "api::finance.finance",
       "mappedBy": "hashtags"
+    },
+    "automobiles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::automobile.automobile",
+      "mappedBy": "hashtags"
     }
   }
 }

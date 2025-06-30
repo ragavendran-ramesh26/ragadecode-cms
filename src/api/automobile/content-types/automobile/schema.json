@@ -48,6 +48,12 @@
       "relation": "manyToOne",
       "target": "api::author.author",
       "inversedBy": "automobiles"
+    },
+    "hashtags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::hashtag.hashtag",
+      "inversedBy": "automobiles"
     }
   }
 }

@@ -486,6 +486,7 @@ export interface ApiAutomobileAutomobile extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Description_in_detail: Schema.Attribute.RichText;
+    hashtags: Schema.Attribute.Relation<'manyToMany', 'api::hashtag.hashtag'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -632,6 +633,10 @@ export interface ApiHashtagHashtag extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    automobiles: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::automobile.automobile'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
