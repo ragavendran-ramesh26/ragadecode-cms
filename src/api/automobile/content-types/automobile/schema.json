@@ -39,6 +39,15 @@
     },
     "category": {
       "type": "string"
+    },
+    "short_description": {
+      "type": "text"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "automobiles"
     }
   }
 }

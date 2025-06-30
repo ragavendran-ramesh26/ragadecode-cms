@@ -66,6 +66,12 @@
       "relation": "oneToMany",
       "target": "api::tourism-travel-trip.tourism-travel-trip",
       "mappedBy": "author"
+    },
+    "automobiles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::automobile.automobile",
+      "mappedBy": "author"
     }
   }
 }

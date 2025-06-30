@@ -421,6 +421,10 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    automobiles: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::automobile.automobile'
+    >;
     bio: Schema.Attribute.RichText;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -472,6 +476,7 @@ export interface ApiAutomobileAutomobile extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
     category: Schema.Attribute.String;
     coverimage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
@@ -488,6 +493,7 @@ export interface ApiAutomobileAutomobile extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedat: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
+    short_description: Schema.Attribute.Text;
     slug: Schema.Attribute.UID<'Title'>;
     Tags: Schema.Attribute.String;
     Title: Schema.Attribute.String;
