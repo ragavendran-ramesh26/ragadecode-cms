@@ -89,6 +89,9 @@
     },
     "short_description": {
       "type": "text"
+    },
+    "schema": {
+      "type": "string"
     }
   }
 }

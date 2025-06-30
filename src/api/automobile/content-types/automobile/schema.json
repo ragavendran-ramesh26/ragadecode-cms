@@ -54,6 +54,9 @@
       "relation": "manyToMany",
       "target": "api::hashtag.hashtag",
       "inversedBy": "automobiles"
+    },
+    "schema": {
+      "type": "string"
     }
   }
 }

@@ -495,6 +495,7 @@ export interface ApiAutomobileAutomobile extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedat: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
+    schema: Schema.Attribute.String;
     short_description: Schema.Attribute.Text;
     slug: Schema.Attribute.UID<'Title'>;
     Tags: Schema.Attribute.String;
@@ -608,6 +609,7 @@ export interface ApiFinanceFinance extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedat: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
+    schema: Schema.Attribute.String;
     short_description: Schema.Attribute.Text;
     similar_articles: Schema.Attribute.Relation<
       'manyToMany',
@@ -704,6 +706,7 @@ export interface ApiNewsArticleNewsArticle extends Struct.CollectionTypeSchema {
     >;
     publishedat: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
+    schema: Schema.Attribute.String;
     short_description: Schema.Attribute.Text;
     similar_articles: Schema.Attribute.Relation<
       'manyToMany',
@@ -822,6 +825,7 @@ export interface ApiTechnologyTechnology extends Struct.CollectionTypeSchema {
     >;
     publishedat: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
+    schema: Schema.Attribute.String;
     short_description: Schema.Attribute.Text;
     similar_articles: Schema.Attribute.Relation<
       'manyToMany',
@@ -859,6 +863,7 @@ export interface ApiTourismTravelTripTourismTravelTrip
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Description_in_detail: Schema.Attribute.RichText;
+    destination: Schema.Attribute.String;
     hashtags: Schema.Attribute.Relation<'manyToMany', 'api::hashtag.hashtag'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -868,6 +873,7 @@ export interface ApiTourismTravelTripTourismTravelTrip
       Schema.Attribute.Private;
     publishedat: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
+    schema: Schema.Attribute.String;
     short_description: Schema.Attribute.Text;
     slug: Schema.Attribute.UID<'Title'>;
     states: Schema.Attribute.Relation<'manyToMany', 'api::state.state'>;

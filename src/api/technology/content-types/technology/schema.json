@@ -67,6 +67,9 @@
       "relation": "manyToOne",
       "target": "api::author.author",
       "inversedBy": "technologies"
+    },
+    "schema": {
+      "type": "string"
     }
   }
 }
