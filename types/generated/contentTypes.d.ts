@@ -871,6 +871,7 @@ export interface ApiTourismTravelTripTourismTravelTrip
     short_description: Schema.Attribute.Text;
     slug: Schema.Attribute.UID<'Title'>;
     states: Schema.Attribute.Relation<'manyToMany', 'api::state.state'>;
+    Tags: Schema.Attribute.String;
     Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

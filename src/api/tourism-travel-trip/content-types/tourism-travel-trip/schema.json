@@ -70,6 +70,9 @@
       "relation": "manyToOne",
       "target": "api::author.author",
       "inversedBy": "tourism_travel_trips"
+    },
+    "Tags": {
+      "type": "string"
     }
   }
 }
