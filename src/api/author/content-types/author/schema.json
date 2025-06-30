@@ -39,6 +39,21 @@
       "relation": "oneToMany",
       "target": "api::news-article.news-article",
       "mappedBy": "author"
+    },
+    "email": {
+      "type": "email"
+    },
+    "facebook": {
+      "type": "string"
+    },
+    "instagram": {
+      "type": "string"
+    },
+    "twitter": {
+      "type": "string"
+    },
+    "linkedin": {
+      "type": "string"
     }
   }
 }
