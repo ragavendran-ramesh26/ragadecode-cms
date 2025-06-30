@@ -74,9 +74,6 @@
     "Tags": {
       "type": "string"
     },
-    "destination": {
-      "type": "string"
-    },
     "schema": {
       "type": "string"
     }
