@@ -11,13 +11,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string"
     },
-    "Bio": {
+    "bio": {
       "type": "text"
     },
-    "Profile_Image": {
+    "profile_image": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
@@ -26,6 +26,19 @@
         "videos",
         "audios"
       ]
+    },
+    "nick": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "news_articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::news-article.news-article",
+      "mappedBy": "author"
     }
   }
 }

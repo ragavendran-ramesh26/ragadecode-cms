@@ -80,6 +80,12 @@
       "relation": "manyToMany",
       "target": "api::city.city",
       "mappedBy": "news_articles"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "news_articles"
     }
   }
 }
