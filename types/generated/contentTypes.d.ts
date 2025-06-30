@@ -431,6 +431,7 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     email: Schema.Attribute.Email;
     facebook: Schema.Attribute.String;
+    finances: Schema.Attribute.Relation<'oneToMany', 'api::finance.finance'>;
     instagram: Schema.Attribute.String;
     linkedin: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -587,6 +588,8 @@ export interface ApiFinanceFinance extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
+    category: Schema.Attribute.String & Schema.Attribute.Required;
     coverimage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
@@ -594,6 +597,8 @@ export interface ApiFinanceFinance extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Description_in_detail: Schema.Attribute.RichText;
+    finances: Schema.Attribute.Relation<'manyToMany', 'api::finance.finance'>;
+    hashtags: Schema.Attribute.Relation<'manyToMany', 'api::hashtag.hashtag'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -602,6 +607,11 @@ export interface ApiFinanceFinance extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedat: Schema.Attribute.Date;
     publishedAt: Schema.Attribute.DateTime;
+    short_description: Schema.Attribute.Text;
+    similar_articles: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::finance.finance'
+    >;
     slug: Schema.Attribute.UID<'Title'>;
     Tags: Schema.Attribute.String;
     Title: Schema.Attribute.String;
@@ -625,6 +635,7 @@ export interface ApiHashtagHashtag extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    finances: Schema.Attribute.Relation<'manyToMany', 'api::finance.finance'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

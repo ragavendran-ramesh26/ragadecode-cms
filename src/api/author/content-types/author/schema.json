@@ -72,6 +72,12 @@
       "relation": "oneToMany",
       "target": "api::automobile.automobile",
       "mappedBy": "author"
+    },
+    "finances": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::finance.finance",
+      "mappedBy": "author"
     }
   }
 }

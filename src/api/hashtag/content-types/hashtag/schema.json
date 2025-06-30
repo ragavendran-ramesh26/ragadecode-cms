@@ -31,6 +31,12 @@
       "relation": "manyToMany",
       "target": "api::technology.technology",
       "inversedBy": "hashtags"
+    },
+    "finances": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::finance.finance",
+      "mappedBy": "hashtags"
     }
   }
 }

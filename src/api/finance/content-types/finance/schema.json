@@ -36,6 +36,37 @@
     },
     "publishedat": {
       "type": "date"
+    },
+    "category": {
+      "type": "string",
+      "required": true
+    },
+    "hashtags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::hashtag.hashtag",
+      "inversedBy": "finances"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "finances"
+    },
+    "short_description": {
+      "type": "text"
+    },
+    "finances": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::finance.finance",
+      "inversedBy": "similar_articles"
+    },
+    "similar_articles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::finance.finance",
+      "mappedBy": "finances"
     }
   }
 }
