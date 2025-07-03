@@ -37,10 +37,6 @@
       "target": "api::hashtag.hashtag",
       "mappedBy": "triptags"
     },
-    "category": {
-      "type": "string",
-      "required": true
-    },
     "countries": {
       "type": "relation",
       "relation": "manyToMany",
@@ -76,6 +72,12 @@
     },
     "schema": {
       "type": "string"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "tourism_travel_trips"
     }
   }
 }

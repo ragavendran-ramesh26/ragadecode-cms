@@ -23,6 +23,30 @@
       "relation": "oneToMany",
       "target": "api::news-article.news-article",
       "mappedBy": "category"
+    },
+    "automobiles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::automobile.automobile",
+      "mappedBy": "category"
+    },
+    "technologies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::technology.technology",
+      "mappedBy": "category"
+    },
+    "tourism_travel_trips": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tourism-travel-trip.tourism-travel-trip",
+      "mappedBy": "category"
+    },
+    "finances": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::finance.finance",
+      "mappedBy": "category"
     }
   }
 }

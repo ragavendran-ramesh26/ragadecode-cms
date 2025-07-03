@@ -37,10 +37,6 @@
     "publishedat": {
       "type": "date"
     },
-    "category": {
-      "type": "string",
-      "required": true
-    },
     "hashtags": {
       "type": "relation",
       "relation": "manyToMany",
@@ -70,6 +66,12 @@
     },
     "schema": {
       "type": "string"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "finances"
     }
   }
 }

@@ -37,9 +37,6 @@
     "publishedat": {
       "type": "date"
     },
-    "category": {
-      "type": "string"
-    },
     "short_description": {
       "type": "text"
     },
@@ -57,6 +54,12 @@
     },
     "schema": {
       "type": "string"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "automobiles"
     }
   }
 }
