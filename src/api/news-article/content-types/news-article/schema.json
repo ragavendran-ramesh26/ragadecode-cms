@@ -51,12 +51,6 @@
       "target": "api::news-article.news-article",
       "inversedBy": "similar_articles"
     },
-    "category": {
-      "type": "string",
-      "default": "news-article",
-      "required": true,
-      "unique": false
-    },
     "hashtags": {
       "type": "relation",
       "relation": "manyToMany",
@@ -92,6 +86,12 @@
     },
     "schema": {
       "type": "string"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "news_articles"
     }
   }
 }
