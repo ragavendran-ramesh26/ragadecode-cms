@@ -35,6 +35,12 @@
       "relation": "manyToMany",
       "target": "api::tourism-travel-trip.tourism-travel-trip",
       "inversedBy": "countries"
+    },
+    "short_description": {
+      "type": "text"
+    },
+    "Description_in_detail": {
+      "type": "richtext"
     }
   }
 }

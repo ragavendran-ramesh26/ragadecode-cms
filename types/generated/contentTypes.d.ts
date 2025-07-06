@@ -566,6 +566,7 @@ export interface ApiCityCity extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Description_in_detail: Schema.Attribute.RichText;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::city.city'> &
       Schema.Attribute.Private;
@@ -574,6 +575,7 @@ export interface ApiCityCity extends Struct.CollectionTypeSchema {
       'api::news-article.news-article'
     >;
     publishedAt: Schema.Attribute.DateTime;
+    short_description: Schema.Attribute.Text;
     slug: Schema.Attribute.UID<'title'>;
     state: Schema.Attribute.Relation<'manyToOne', 'api::state.state'>;
     title: Schema.Attribute.String;
@@ -601,6 +603,7 @@ export interface ApiCountryCountry extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Description_in_detail: Schema.Attribute.RichText;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -612,6 +615,7 @@ export interface ApiCountryCountry extends Struct.CollectionTypeSchema {
       'api::news-article.news-article'
     >;
     publishedAt: Schema.Attribute.DateTime;
+    short_description: Schema.Attribute.Text;
     slug: Schema.Attribute.UID<'title'>;
     states: Schema.Attribute.Relation<'oneToMany', 'api::state.state'>;
     title: Schema.Attribute.String;
@@ -784,6 +788,7 @@ export interface ApiStateState extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Description_in_detail: Schema.Attribute.RichText;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::state.state'> &
       Schema.Attribute.Private;
@@ -792,6 +797,7 @@ export interface ApiStateState extends Struct.CollectionTypeSchema {
       'api::news-article.news-article'
     >;
     publishedAt: Schema.Attribute.DateTime;
+    short_description: Schema.Attribute.Text;
     slug: Schema.Attribute.UID<'title'>;
     title: Schema.Attribute.String;
     tourism_travel_trips: Schema.Attribute.Relation<

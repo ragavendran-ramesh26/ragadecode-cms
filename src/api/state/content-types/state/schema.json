@@ -41,6 +41,12 @@
       "relation": "manyToMany",
       "target": "api::tourism-travel-trip.tourism-travel-trip",
       "inversedBy": "states"
+    },
+    "short_description": {
+      "type": "text"
+    },
+    "Description_in_detail": {
+      "type": "richtext"
     }
   }
 }
